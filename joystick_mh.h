@@ -13,8 +13,8 @@
 
 typedef enum
 {
-    push,
-    move
+    JOYSTICK_PUSH,
+    JOYSTICK_MOVE
 } joystick_event_type_t;
 
 typedef struct

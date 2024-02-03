@@ -27,7 +27,7 @@ void joystick_mh_reader_thread(joystick_mh_t *joystick)
             if (diff >= JOYSTICK_SENS_THRESHOLD)
             {
                 joystick_event_t evt = {
-                    .event_type = move,
+                    .event_type = JOYSTICK_MOVE,
                     .axis = i,
                     .axis_value = buf};
 
