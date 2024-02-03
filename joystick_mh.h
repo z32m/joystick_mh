@@ -40,11 +40,19 @@ typedef struct
     joystick_mh_t __dt_label = {.events = NULL};                                               \
     K_THREAD_DEFINE(__dt_label##joystick_mh_reader_thread_id, 512, joystick_mh_reader_thread, &__dt_label, NULL, NULL, 5, 0, 0)
 
-#define JOYSTICK_MH_INSTALL(__dt_label)       \
-    __dt_label.events = &__dt_label##_events; \
-    __dt_label.button = &_##__dt_label##_btn; \
-    __dt_label.axis[0] = &_##__dt_label##_x;  \
-    __dt_label.axis[1] = &_##__dt_label##_y
+#define JOYSTICK_MH_INSTALL(__dt_label)                     \
+    __dt_label.events = &__dt_label##_events;               \
+    __dt_label.button = &_##__dt_label##_btn;               \
+    __dt_label.axis[0] = &_##__dt_label##_x;                \
+    __dt_label.axis[1] = &_##__dt_label##_y;                \
+    {                                                       \
+        size_t i;                                           \
+        for (size_t i = 0; i < 2; i++)                      \
+        {                                                   \
+            ENSURE(adc_is_ready_dt, __dt_label.axis[i]);    \
+            SURE(adc_channel_setup_dt, __dt_label.axis[i]); \
+        }                                                   \
+    }
 
 int joystick_mh_get_event(joystick_mh_t *joystick, joystick_event_t *evt, k_timeout_t timeout);
 void joystick_mh_reader_thread(joystick_mh_t *joystick);
