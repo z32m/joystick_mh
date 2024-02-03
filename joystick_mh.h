@@ -4,6 +4,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/adc.h>
 #include <xgpio.h>
+#include <xglob.h>
 #include <xdts.h>
 
 #define JOYSTICK_MAX_EVENTS 16

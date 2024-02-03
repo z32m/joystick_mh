@@ -7,7 +7,7 @@
 
 void joystick_mh_reader_thread(joystick_mh_t *joystick)
 {
-    WAIT_FOR(joystick->events);
+    X_WAIT_FOR(joystick->events);
 
     uint16_t buf, diff;
     size_t i, written;
