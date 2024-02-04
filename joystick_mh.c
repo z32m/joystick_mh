@@ -23,6 +23,7 @@ void joystick_mh_reader_thread(joystick_mh_t *joystick)
         {
             SURE(adc_sequence_init_dt, joystick->axis[i], &sequence);
             SURE(adc_read_dt, joystick->axis[i], &sequence);
+            buf >>= 2;
             diff = ABS(joystick_state[i], buf);
             if (diff >= JOYSTICK_SENS_THRESHOLD)
             {

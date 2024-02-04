@@ -8,8 +8,8 @@
 #include <xdts.h>
 
 #define JOYSTICK_MAX_EVENTS 16
-#define JOYSTICK_READ_DELAY_MS 50
-#define JOYSTICK_SENS_THRESHOLD 150
+#define JOYSTICK_READ_DELAY_MS 20
+#define JOYSTICK_SENS_THRESHOLD 50
 
 typedef enum
 {
